@@ -11,16 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        run: echo "Checking out code..."
+
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        run: echo "Setting up Node.js 22 with npm cache..."
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          echo "Installing dependencies with npm ci..."
+          npm ci
 
       - name: Run tests
-        run: npm test
+        run: |
+          echo "Running test suite with npm test..."
+          npm test
