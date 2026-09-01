@@ -48,15 +48,10 @@ jobs:
               git clone ${{ secrets.REPO_URL }}
               cd backend-demo
             fi
+            echo "Setting up production environment file..."
+            echo "NODE_ENV=production" > .env
+            echo "PORT=${{ secrets.PORT }}" >> .env
 
-            ENV_FILE="$HOME/${{ secrets.REMOTE_USERNAME }}/.env.backend-demo"
-            echo "Copying production environment file from $ENV_FILE..."
-            if [ -f "$ENV_FILE" ]; then
-              cp "$ENV_FILE" .env.production
-            else
-              echo "Error: $ENV_FILE not found"
-              exit 1
-            fi
             npm install
             npm run build
             pm2 stop ecosystem.config.cjs
