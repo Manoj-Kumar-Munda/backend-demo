@@ -17,4 +17,4 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
-          scriptPath: ./deploy.sh
+          scriptPath: /home/ubuntu/backend-demo/deploy.sh
