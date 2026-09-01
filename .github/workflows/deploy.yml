@@ -18,8 +18,15 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            git clone ${{ secrets.REPO_URL }}
-            cd backend-demo
+            if [ -d "backend-demo/.git" ]; then
+              echo "Repository exists, pulling latest changes..."
+              cd backend-demo
+              git pull origin main
+            else
+              echo "Cloning repository..."
+              git clone ${{ secrets.REPO_URL }}
+              cd backend-demo
+            fi
             npm install
             npm run build
             npm start
