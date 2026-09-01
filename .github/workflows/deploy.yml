@@ -18,6 +18,27 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+            if ! command -v node >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
+              echo "Installing Node.js and npm..."
+              if [ ! -s "$NVM_DIR/nvm.sh" ]; then
+                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+                . "$NVM_DIR/nvm.sh"
+              fi
+              nvm install 22
+            else
+              echo "Node.js $(node -v) and npm $(npm -v) already installed"
+            fi
+
+            if ! command -v pm2 >/dev/null 2>&1; then
+              echo "Installing PM2 for current user..."
+              npm install -g pm2
+            else
+              echo "PM2 $(pm2 -v) already installed"
+            fi
+
             if [ -d "backend-demo/.git" ]; then
               echo "Repository exists, pulling latest changes..."
               cd backend-demo
