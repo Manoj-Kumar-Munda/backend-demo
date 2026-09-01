@@ -16,5 +16,5 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          script: |
-            whoami
+          port: ${{ secrets.REMOTE_PORT }}
+          script: whoami
