@@ -50,7 +50,7 @@ jobs:
             fi
             echo "Setting up production environment file..."
             echo "NODE_ENV=production" > .env
-            echo "PORT=${{ secrets.PORT }}" >> .env
+            echo "PORT=${{ secrets.PROD_PORT }}" >> .env
 
             npm install
             npm run build
