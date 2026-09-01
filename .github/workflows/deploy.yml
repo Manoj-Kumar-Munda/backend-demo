@@ -17,4 +17,9 @@ jobs:
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
-          script: whoami
+          script: |
+            git clone ${{ secrets.REPO_URL }}
+            cd backend-demo
+            npm install
+            npm run build
+            npm start
