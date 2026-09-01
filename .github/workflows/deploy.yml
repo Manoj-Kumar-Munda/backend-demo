@@ -51,5 +51,5 @@ jobs:
 
             npm install
             npm run build
-            pm2 stop ecosystem.config.js
-            pm2 reload ecosystem.config.js --env production
+            pm2 stop ecosystem.config.cjs
+            pm2 reload ecosystem.config.cjs --env production
