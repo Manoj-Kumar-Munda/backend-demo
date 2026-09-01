@@ -49,14 +49,6 @@ jobs:
               cd backend-demo
             fi
 
-            echo "Copying environment file..."
-            if [ -f "$HOME/.env.backend-demo" ]; then
-              cp "$HOME/.env.backend-demo" .env
-            else
-              echo "Error: $HOME/.env.backend-demo not found"
-              exit 1
-            fi
-
             npm install
             npm run build
             pm2 stop ecosystem.config.js
