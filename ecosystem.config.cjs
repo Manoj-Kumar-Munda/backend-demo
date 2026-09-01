@@ -6,13 +6,13 @@ module.exports = {
     exec_mode: 'cluster',
     watch: false,
     autorestart: true,
-    env: {
-      NODE_ENV: 'production',
-      PORT: 4000,
-    },
     env_development: {
       NODE_ENV: 'development',
-      PORT: 4000,
+      PORT: process.env.PORT,
+    },
+    env_production: {
+      NODE_ENV: 'production',
+      PORT: process.env.PORT,
     },
   }],
 };
