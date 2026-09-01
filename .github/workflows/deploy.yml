@@ -50,4 +50,4 @@ jobs:
             fi
             npm install
             npm run build
-            npm start
+            pm2 start dist/index.js --name backend-demo
